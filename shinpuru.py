@@ -23,6 +23,36 @@ class MainWindow(QtGui.QMainWindow):
         self.setWindowTitle('Shinpuru Timer')
         self.setWindowIcon(QtGui.QIcon('resources/icons/clock.png'))
         
+        self.centralWidget = QtGui.QWidget(self)
+        self.centralWidget.setObjectName("centralWidget")
+        
+        self.gridLayoutWidget = QtGui.QWidget(self.centralWidget)
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(1, 1, 219, 89)) #( x, y, w, h)
+        self.gridLayoutWidget.setObjectName("gridLayoutWidget")
+        self.gridLayout = QtGui.QGridLayout(self.gridLayoutWidget)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setObjectName("gridLayout")
+        self.textBrowser = QtGui.QTextBrowser(self.gridLayoutWidget)
+        self.textBrowser.setReadOnly(False)
+        self.textBrowser.setOverwriteMode(False)
+        self.textBrowser.setObjectName("textBrowser")
+        self.gridLayout.addWidget(self.textBrowser, 0, 0, 1, 1)
+        self.progressBar = QtGui.QProgressBar(self.centralWidget)
+        self.progressBar.setGeometry(QtCore.QRect(1, 90, 219, 10))
+        self.progressBar.setProperty("value", 24)
+        self.progressBar.setTextVisible(False)
+        self.progressBar.setObjectName("progressBar")
+        self.setCentralWidget(self.centralWidget)
+        
+        self.textBrowser.setHtml(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600;\">Shinpuru Timer</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+
+
+
+        
     def createActions(self):
         self.quitAction = QtGui.QAction("&Quit", self,
                 triggered=self.quit, icon=QtGui.QIcon('resources/icons/quit.png'))
@@ -77,7 +107,7 @@ def main(args):
 
     app = QtGui.QApplication(args)
     # Akár a felület stílusát is módosíthatjuk:
-    style = QtGui.QStyleFactory.keys()[0]
+    style = QtGui.QStyleFactory.keys()[6]
     # 6 - Cleanlooks
     # 5 - Plastique
     # 4 - CDE
