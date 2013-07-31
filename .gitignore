@@ -1,0 +1,9 @@
+# Eclipse files:
+.project
+.pydevproject
+
+# virtualenv:
+venv/
+
+# commits:
+commit.log
